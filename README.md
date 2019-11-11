@@ -17,9 +17,9 @@ make
 | Metric | Meaning | Labels |
 | ------ | ------- | ------ |
 | pingdom_up | Was the last query on Pingdom API successful, | |
-| pingdom_uptime_status | The current status of the check (1: up, 0: down). | |
-| pingdom_uptime_response_time | The response time of last test in milliseconds. | |
-| pingdom_transaction_status | The current status of the transaction (1: successful, 0: failing). | |
+| pingdom_uptime_status | The current status of the check (1: up, 0: down). | name, hostname, resolution, paused, tags |
+| pingdom_uptime_response_time | The response time of last test in milliseconds. | name, hostname, resolution, paused, tags |
+| pingdom_transaction_status | The current status of the transaction (1: successful, 0: failing). | name, kitchen, paused, tags |
 
 ## Using Docker
 
