@@ -49,12 +49,12 @@ var (
 	pingdomCheckStatus = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "pingdom_uptime_status",
 		Help: "The current status of the check (1: up, 0: down)",
-	}, []string{"id", "name", "hostname", "resolution", "paused", "tags"})
+	}, []string{"name", "hostname", "resolution", "paused", "tags"})
 
 	pingdomCheckResponseTime = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "pingdom_uptime_response_time",
 		Help: "The response time of last test in milliseconds",
-	}, []string{"id", "name", "hostname", "resolution", "paused", "tags"})
+	}, []string{"name", "hostname", "resolution", "paused", "tags"})
 
 	pingdomTransactionStatus = prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "pingdom_transaction_status",
@@ -134,8 +134,6 @@ func retrieveChecksMetrics(client *pingdom.Client) {
 	pingdomUp.Set(1)
 
 	for _, check := range checks {
-		id := strconv.Itoa(check.ID)
-
 		var status float64
 		switch check.Status {
 		case "unknown":
@@ -168,7 +166,6 @@ func retrieveChecksMetrics(client *pingdom.Client) {
 		tags := strings.Join(tagsRaw, ",")
 
 		pingdomCheckStatus.WithLabelValues(
-			id,
 			check.Name,
 			check.Hostname,
 			resolution,
@@ -177,7 +174,6 @@ func retrieveChecksMetrics(client *pingdom.Client) {
 		).Set(status)
 
 		pingdomCheckResponseTime.WithLabelValues(
-			id,
 			check.Name,
 			check.Hostname,
 			resolution,
