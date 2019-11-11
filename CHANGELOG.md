@@ -1,3 +1,8 @@
+## 0.1.5 / 2019-11-11
+
+* [CHANGE] remove label `id` from pingdom_check_status
+* [CHANGE] remove label `id` from pingdom_check_response_time
+
 ## 0.1.4 / 2019-10-02
 
 * [CHANGE] move exporter to the first available port `9158` from [Prometheus wiki](https://github.com/prometheus/prometheus/wiki/Default-port-allocations)
